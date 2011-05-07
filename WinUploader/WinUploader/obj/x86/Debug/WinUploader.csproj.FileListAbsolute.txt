@@ -1,0 +1,12 @@
+J:\my data\SVN\minecraftss\WinUploader\WinUploader\bin\Debug\WinUploader.exe
+J:\my data\SVN\minecraftss\WinUploader\WinUploader\bin\Debug\WinUploader.pdb
+J:\my data\SVN\minecraftss\WinUploader\WinUploader\bin\Debug\Newtonsoft.Json.Net35.dll
+J:\my data\SVN\minecraftss\WinUploader\WinUploader\bin\Debug\Newtonsoft.Json.Net35.pdb
+J:\my data\SVN\minecraftss\WinUploader\WinUploader\bin\Debug\Newtonsoft.Json.Net35.xml
+J:\my data\SVN\minecraftss\WinUploader\WinUploader\obj\x86\Debug\ResolveAssemblyReference.cache
+J:\my data\SVN\minecraftss\WinUploader\WinUploader\obj\x86\Debug\WinUploader.Form1.resources
+J:\my data\SVN\minecraftss\WinUploader\WinUploader\obj\x86\Debug\WinUploader.Properties.Resources.resources
+J:\my data\SVN\minecraftss\WinUploader\WinUploader\obj\x86\Debug\ResGen.read.1.tlog
+J:\my data\SVN\minecraftss\WinUploader\WinUploader\obj\x86\Debug\ResGen.write.1.tlog
+J:\my data\SVN\minecraftss\WinUploader\WinUploader\obj\x86\Debug\WinUploader.exe
+J:\my data\SVN\minecraftss\WinUploader\WinUploader\obj\x86\Debug\WinUploader.pdb
