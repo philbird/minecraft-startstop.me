@@ -8,7 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq; 
-using System.IO; 
+using System.IO;
+using JSonDeserialiser; 
 
 namespace WinUploader
 {
@@ -33,23 +34,62 @@ namespace WinUploader
 
         private void btnUpload_Click(object sender, EventArgs e)
         {
-            // Load the data into a dictionary using the json deserliazer. 
-
-            // Load the file into a strong; 
+           
        
+           
+
+            #region Setup the Json file to be parsed... this is dirty, very dirty. ;) 
+
             StreamReader streamReader = new StreamReader(openFileDialog1.FileName);
-            string _StatsFile = streamReader.ReadToEnd();
+            // We should read this by line so we can add key values into the JSON/ 
+             string _StatsFile ="";
+             bool _hitStatsChange = false; 
+            while (!streamReader.EndOfStream)
+            {
+                string _holdLine = streamReader.ReadLine();
+               
+                // Capture the end of the file. 
+                if ((_hitStatsChange)&&(_holdLine.Contains("],")))
+                {
+
+                    _hitStatsChange = false; 
+                }
+
+
+                if (_hitStatsChange)
+                {
+                    // Add the Value
+                    _holdLine = _holdLine.Replace("\":", "\", \"Val\":");
+                    // Add the Key
+                    _holdLine = _holdLine.Replace("{\"", "{\"Key\":\"");
+                     
+                }
+                // This has to go below the above so we don't capure the initia line. 
+                if (_holdLine.ToLower().Contains("stats-change"))
+                {
+                    _hitStatsChange = true;
+                    // This is a dirty aweful hack this whole lot. 
+                    _holdLine = _holdLine.Replace("stats-change", "statschange"); 
+                }
+                _StatsFile += _holdLine + System.Environment.NewLine ; 
+                
+            }
+            
             streamReader.Close();
+            #endregion 
 
-            Dictionary<string, dynamic> values = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(_StatsFile);
+            var jsonObject = JsonConvert.DeserializeObject<JsonObject>(_StatsFile);
 
+            int _statsCount = 0;
+            while (_statsCount < jsonObject.statschange.Count)
+            {
+                string _Key = jsonObject.statschange[_statsCount].Key;
+                int _Val = jsonObject.statschange[_statsCount].Val; 
 
-            // Now we need to access the stats file bit
+                _statsCount++; 
+            }
+            
 
-            JObject o = JObject.Parse(_StatsFile);
-            JArray stats = (JArray)o["stats-change"];
-
-            // stuck so far. :) 
 
         }
     }

@@ -10,3 +10,15 @@ J:\my data\SVN\minecraftss\WinUploader\WinUploader\obj\x86\Debug\ResGen.read.1.t
 J:\my data\SVN\minecraftss\WinUploader\WinUploader\obj\x86\Debug\ResGen.write.1.tlog
 J:\my data\SVN\minecraftss\WinUploader\WinUploader\obj\x86\Debug\WinUploader.exe
 J:\my data\SVN\minecraftss\WinUploader\WinUploader\obj\x86\Debug\WinUploader.pdb
+C:\My Data\Visual Studio Projects\minecraftss\WinUploader\WinUploader\obj\x86\Debug\WinUploader.exe
+C:\My Data\Visual Studio Projects\minecraftss\WinUploader\WinUploader\obj\x86\Debug\WinUploader.pdb
+C:\My Data\Visual Studio Projects\minecraftss\WinUploader\WinUploader\bin\Debug\WinUploader.exe
+C:\My Data\Visual Studio Projects\minecraftss\WinUploader\WinUploader\bin\Debug\WinUploader.pdb
+C:\My Data\Visual Studio Projects\minecraftss\WinUploader\WinUploader\bin\Debug\Newtonsoft.Json.Net35.dll
+C:\My Data\Visual Studio Projects\minecraftss\WinUploader\WinUploader\bin\Debug\Newtonsoft.Json.Net35.pdb
+C:\My Data\Visual Studio Projects\minecraftss\WinUploader\WinUploader\bin\Debug\Newtonsoft.Json.Net35.xml
+C:\My Data\Visual Studio Projects\minecraftss\WinUploader\WinUploader\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\My Data\Visual Studio Projects\minecraftss\WinUploader\WinUploader\obj\x86\Debug\WinUploader.Form1.resources
+C:\My Data\Visual Studio Projects\minecraftss\WinUploader\WinUploader\obj\x86\Debug\WinUploader.Properties.Resources.resources
+C:\My Data\Visual Studio Projects\minecraftss\WinUploader\WinUploader\obj\x86\Debug\ResGen.read.1.tlog
+C:\My Data\Visual Studio Projects\minecraftss\WinUploader\WinUploader\obj\x86\Debug\ResGen.write.1.tlog

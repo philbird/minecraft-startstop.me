@@ -32,6 +32,10 @@
             this.btnLocate = new System.Windows.Forms.Button();
             this.txbFileLocation = new System.Windows.Forms.TextBox();
             this.btnUpload = new System.Windows.Forms.Button();
+            this.txbEmailAddress = new System.Windows.Forms.TextBox();
+            this.txbPassword = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -58,7 +62,7 @@
             // 
             // btnUpload
             // 
-            this.btnUpload.Location = new System.Drawing.Point(290, 83);
+            this.btnUpload.Location = new System.Drawing.Point(290, 227);
             this.btnUpload.Name = "btnUpload";
             this.btnUpload.Size = new System.Drawing.Size(175, 23);
             this.btnUpload.TabIndex = 2;
@@ -66,11 +70,47 @@
             this.btnUpload.UseVisualStyleBackColor = true;
             this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
             // 
+            // txbEmailAddress
+            // 
+            this.txbEmailAddress.Location = new System.Drawing.Point(12, 77);
+            this.txbEmailAddress.Name = "txbEmailAddress";
+            this.txbEmailAddress.Size = new System.Drawing.Size(272, 20);
+            this.txbEmailAddress.TabIndex = 3;
+            // 
+            // txbPassword
+            // 
+            this.txbPassword.Location = new System.Drawing.Point(13, 113);
+            this.txbPassword.Name = "txbPassword";
+            this.txbPassword.Size = new System.Drawing.Size(271, 20);
+            this.txbPassword.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(290, 80);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(153, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "StartStop.me Registered Email ";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(290, 116);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(117, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "StartStop.me Password";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(468, 262);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txbPassword);
+            this.Controls.Add(this.txbEmailAddress);
             this.Controls.Add(this.btnUpload);
             this.Controls.Add(this.txbFileLocation);
             this.Controls.Add(this.btnLocate);
@@ -87,6 +127,10 @@
         private System.Windows.Forms.Button btnLocate;
         private System.Windows.Forms.TextBox txbFileLocation;
         private System.Windows.Forms.Button btnUpload;
+        private System.Windows.Forms.TextBox txbEmailAddress;
+        private System.Windows.Forms.TextBox txbPassword;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 
