@@ -15,6 +15,15 @@ namespace WinUploader
 {
     public partial class Form1 : Form
     {
+
+        // Setup a connection to the statdrop webservices
+        public statdropws.DeveloperAPI oDevAPI = new statdropws.DeveloperAPI();
+        
+        // Developer APIKEY
+        const string APIKey = "1b50f643-fb89-4d5a-8fcf-20ca96deef22";
+
+        const Int64 cGameStarted = 13;
+
         public Form1()
         {
             InitializeComponent();
@@ -35,7 +44,7 @@ namespace WinUploader
         private void btnUpload_Click(object sender, EventArgs e)
         {
            
-       
+         Int64 _UserID = oDevAPI.AuthenticateUser(APIKey, txbEmailAddress.Text, txbPassword.Text);
            
 
             #region Setup the Json file to be parsed... this is dirty, very dirty. ;) 
@@ -84,13 +93,30 @@ namespace WinUploader
             while (_statsCount < jsonObject.statschange.Count)
             {
                 string _Key = jsonObject.statschange[_statsCount].Key;
-                int _Val = jsonObject.statschange[_statsCount].Val; 
+                int _Val = jsonObject.statschange[_statsCount].Val;
+
+                #region UploadTheStat
+
+                      if (_UserID != -1)
+             {
+                          switch (_Key)
+                          {
+                              case "1000": 
+                                  // Number of times game started
+                                  oDevAPI.ExactStatUpdateForUser(APIKey, _UserID, cGameStarted,_Val, 0, "");
+                                  break; 
+                          }
+                 
+             }
+
+
+                #endregion 
 
                 _statsCount++; 
             }
-            
 
-
+          
+       
         }
     }
 }
