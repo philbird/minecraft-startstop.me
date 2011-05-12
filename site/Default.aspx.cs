@@ -7,7 +7,8 @@ using System.Web.UI.WebControls;
 using System.IO;
 using JSonDeserialiser;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq; 
+using Newtonsoft.Json.Linq;
+using MineCraftHelper; 
 
 public partial class _Default : System.Web.UI.Page
 {
@@ -19,6 +20,7 @@ public partial class _Default : System.Web.UI.Page
     const string APIKey = "1b50f643-fb89-4d5a-8fcf-20ca96deef22";
 
     const Int64 cGameStarted = 13;
+    
 
 
     protected void Page_Load(object sender, EventArgs e)
@@ -93,16 +95,17 @@ public partial class _Default : System.Web.UI.Page
 
                     #region UploadTheStat
 
+                    // Load the dictionary
+                    MineCraftHelper.Stats oStats = new Stats(); 
+                    
+
                     if (_UserID != -1)
                     {
-                        switch (_Key)
+                        if (oStats.ReturnStartStopID(_Key) != -1)
                         {
-                            case "1000":
-                                // Number of times game started
-                                oDevAPI.ExactStatUpdateForUser(APIKey, _UserID, cGameStarted, _Val, 0, "");
-                                break;
+                            oDevAPI.ExactStatUpdateForUser(APIKey, _UserID, oStats.ReturnStartStopID(_Key), _Val, 0, "");
                         }
-
+    
                     }
 
 
@@ -110,6 +113,8 @@ public partial class _Default : System.Web.UI.Page
 
                     _statsCount++;
                 }
+
+                Response.Redirect("UploadComplete.aspx"); 
 
             }
             catch (Exception ex)

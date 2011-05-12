@@ -4,16 +4,53 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Minecraft startstop.me stats uploader</title>
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
+    <link rel="stylesheet" type="text/css" href="default.css" />
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
+
+    <div id="header">
+	<div id="header_inner">
+		<h1><span>minecraftss</span> startstop.me</h1>
+		<div id="slogan">Upload and share your minecraft stats</div>
+	</div>
+</div>
+<div id="main">
+
+	<div id="lcol">
+		<div id="menu">
+			<ul>
+				<li><a href="default.aspx">Home</a><span></span></li>
+				<li><a href="http://www.startstop.me" target=_blank>Startstop.me<span></span></a></li>
+				<li><a href="http://www.startstop.me/Register.aspx" target=_blank>Register for account<span></span></a></li>
+				<li><a href="http://minecraftss.codeplex.com/" target=_blank>Codeplex project<span></span></a></li>
+		
+			</ul>
+		</div>
+		<div id="menu_end"></div>
+
+        </div>
+        <div id="rcol">
+		<div id="rcontent">
         <asp:ContentPlaceHolder id="MainContent" runat="server">
         
         </asp:ContentPlaceHolder>
+        </div>
+        </div>
+
+
+        </div>
+
+        
+<div id="footer">
+    + This is a free open source project, hosted by <a href="http://www.startstop.me" target=_blank>startstop.me</a>
+	+ Thanks to <a href="http://www.nodethirtythree.com/" target=_blank>NodeThirtyThree</a> for the free css design. 
+</div>
+
     </div>
     </form>
 </body>
