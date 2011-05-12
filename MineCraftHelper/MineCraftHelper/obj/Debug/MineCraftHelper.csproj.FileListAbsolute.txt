@@ -1,0 +1,5 @@
+J:\my data\SVN\minecraftss\MineCraftHelper\MineCraftHelper\bin\Debug\MineCraftHelper.dll
+J:\my data\SVN\minecraftss\MineCraftHelper\MineCraftHelper\bin\Debug\MineCraftHelper.pdb
+J:\my data\SVN\minecraftss\MineCraftHelper\MineCraftHelper\obj\Debug\ResolveAssemblyReference.cache
+J:\my data\SVN\minecraftss\MineCraftHelper\MineCraftHelper\obj\Debug\MineCraftHelper.dll
+J:\my data\SVN\minecraftss\MineCraftHelper\MineCraftHelper\obj\Debug\MineCraftHelper.pdb

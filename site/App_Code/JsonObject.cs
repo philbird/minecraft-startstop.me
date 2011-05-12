@@ -5,20 +5,20 @@ using System.Text;
 
 namespace JSonDeserialiser
 {
-    class JsonObject
+    public class JsonObject
     {
         public JsonUser User;
         public List<JsonStat> statschange { get; set; }
         public string Checksum { get; set; }
     }
 
-    class JsonUser
+    public class JsonUser
     {
         public string Name { get; set; }
         public string SessionId { get; set; }
     }
 
-    class JsonStat
+    public class JsonStat
     {
         public string Key { get; set; }
         public int Val { get; set; }
