@@ -36,6 +36,9 @@
             this.txbPassword = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnSelfLocate = new System.Windows.Forms.Button();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.lblMessage = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -102,11 +105,46 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "StartStop.me Password";
             // 
+            // btnSelfLocate
+            // 
+            this.btnSelfLocate.Location = new System.Drawing.Point(290, 42);
+            this.btnSelfLocate.Name = "btnSelfLocate";
+            this.btnSelfLocate.Size = new System.Drawing.Size(175, 23);
+            this.btnSelfLocate.TabIndex = 7;
+            this.btnSelfLocate.Text = "Locate Yourself";
+            this.btnSelfLocate.UseVisualStyleBackColor = true;
+            this.btnSelfLocate.Click += new System.EventHandler(this.btnSelfLocate_Click);
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(13, 156);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(253, 13);
+            this.linkLabel1.TabIndex = 8;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "If you do not have a startstop.me account click here";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // lblMessage
+            // 
+            this.lblMessage.AutoSize = true;
+            this.lblMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMessage.Location = new System.Drawing.Point(16, 189);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(199, 25);
+            this.lblMessage.TabIndex = 9;
+            this.lblMessage.Text = "Upload Complete!";
+            this.lblMessage.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(468, 262);
+            this.Controls.Add(this.lblMessage);
+            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.btnSelfLocate);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txbPassword);
@@ -131,6 +169,9 @@
         private System.Windows.Forms.TextBox txbPassword;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnSelfLocate;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Label lblMessage;
     }
 }
 

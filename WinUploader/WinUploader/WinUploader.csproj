@@ -116,6 +116,12 @@
       <CachedSettingsPropName>WinUploader_statdropws_DeveloperAPI</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\MineCraftHelper\MineCraftHelper\MineCraftHelper.csproj">
+      <Project>{1F63D8D6-7AD9-44EA-B9CA-C887203E3EF6}</Project>
+      <Name>MineCraftHelper</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
