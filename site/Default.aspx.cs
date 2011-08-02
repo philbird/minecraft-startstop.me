@@ -40,87 +40,93 @@ public partial class _Default : System.Web.UI.Page
 
 
                 // Next read the file from the directory
-
+                statdropws.ReturnMessage oReturnMessage = new statdropws.ReturnMessage(); 
                 statdropws.DeveloperAPI oDevAPI = new statdropws.DeveloperAPI();
-                Int64 _UserID = oDevAPI.AuthenticateUser(APIKey, uxEmailAddress.Text, uxPassword.Text);
+                oReturnMessage = oDevAPI.AuthenticateUser(APIKey, uxEmailAddress.Text, uxPassword.Text);
 
-
-                #region Setup the Json file to be parsed... this is dirty, very dirty. ;)
-
-                StreamReader streamReader = new StreamReader(Server.MapPath("~/uploadedstats/") + filename);
-                // We should read this by line so we can add key values into the JSON/ 
-                string _StatsFile = "";
-                bool _hitStatsChange = false;
-                while (!streamReader.EndOfStream)
+                if (oReturnMessage.Success)
                 {
-                    string _holdLine = streamReader.ReadLine();
+                    Int64 _UserID = oReturnMessage.ReturnedID;
 
-                    // Capture the end of the file. 
-                    if ((_hitStatsChange) && (_holdLine.Contains("],")))
+
+                    #region Setup the Json file to be parsed... this is dirty, very dirty. ;)
+
+                    StreamReader streamReader = new StreamReader(Server.MapPath("~/uploadedstats/") + filename);
+                    // We should read this by line so we can add key values into the JSON/ 
+                    string _StatsFile = "";
+                    bool _hitStatsChange = false;
+                    while (!streamReader.EndOfStream)
                     {
+                        string _holdLine = streamReader.ReadLine();
 
-                        _hitStatsChange = false;
-                    }
-
-
-                    if (_hitStatsChange)
-                    {
-                        // Add the Value
-                        _holdLine = _holdLine.Replace("\":", "\", \"Val\":");
-                        // Add the Key
-                        _holdLine = _holdLine.Replace("{\"", "{\"Key\":\"");
-
-                    }
-                    // This has to go below the above so we don't capure the initia line. 
-                    if (_holdLine.ToLower().Contains("stats-change"))
-                    {
-                        _hitStatsChange = true;
-                        // This is a dirty aweful hack this whole lot. 
-                        _holdLine = _holdLine.Replace("stats-change", "statschange");
-                    }
-                    _StatsFile += _holdLine + System.Environment.NewLine;
-
-                }
-
-                streamReader.Close();
-                #endregion
-
-                var jsonObject = JsonConvert.DeserializeObject<JsonObject>(_StatsFile);
-
-                int _statsCount = 0;
-                while (_statsCount < jsonObject.statschange.Count)
-                {
-                    string _Key = jsonObject.statschange[_statsCount].Key;
-                    int _Val = jsonObject.statschange[_statsCount].Val;
-
-                    #region UploadTheStat
-
-                    // Load the dictionary
-                    MineCraftHelper.Stats oStats = new Stats(); 
-                    
-
-                    if (_UserID != -1)
-                    {
-                        if (oStats.ReturnStartStopID(_Key) != -1)
+                        // Capture the end of the file. 
+                        if ((_hitStatsChange) && (_holdLine.Contains("],")))
                         {
-                            oDevAPI.ExactStatUpdateForUser(APIKey, _UserID, oStats.ReturnStartStopID(_Key), _Val, 0, "");
+
+                            _hitStatsChange = false;
                         }
-    
+
+
+                        if (_hitStatsChange)
+                        {
+                            // Add the Value
+                            _holdLine = _holdLine.Replace("\":", "\", \"Val\":");
+                            // Add the Key
+                            _holdLine = _holdLine.Replace("{\"", "{\"Key\":\"");
+
+                        }
+                        // This has to go below the above so we don't capure the initia line. 
+                        if (_holdLine.ToLower().Contains("stats-change"))
+                        {
+                            _hitStatsChange = true;
+                            // This is a dirty aweful hack this whole lot. 
+                            _holdLine = _holdLine.Replace("stats-change", "statschange");
+                        }
+                        _StatsFile += _holdLine + System.Environment.NewLine;
+
                     }
 
-
+                    streamReader.Close();
                     #endregion
 
-                    _statsCount++;
-                }
+                    var jsonObject = JsonConvert.DeserializeObject<JsonObject>(_StatsFile);
 
-                Response.Redirect("UploadComplete.aspx"); 
+                    int _statsCount = 0;
+                    while (_statsCount < jsonObject.statschange.Count)
+                    {
+                        string _Key = jsonObject.statschange[_statsCount].Key;
+                        int _Val = jsonObject.statschange[_statsCount].Val;
+
+                        #region UploadTheStat
+
+                        // Load the dictionary
+                        MineCraftHelper.Stats oStats = new Stats();
+
+
+                        if (_UserID != -1)
+                        {
+                            if (oStats.ReturnStartStopID(_Key) != -1)
+                            {
+                                oDevAPI.ExactStatUpdateForUser(APIKey, _UserID, oStats.ReturnStartStopID(_Key), _Val, 0, "");
+                            }
+
+                        }
+
+
+                        #endregion
+
+                        _statsCount++;
+                    }
+
+                    Response.Redirect("UploadComplete.aspx");
+                }
 
             }
             catch (Exception ex)
             {
                 // StatusLabel.Text = "Upload status: The file could not be uploaded. The following error occured: " + ex.Message;
             }
+
         } 
     }
 }

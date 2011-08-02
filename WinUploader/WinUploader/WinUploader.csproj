@@ -92,6 +92,12 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Web References\statdropws\ReturnMessage.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\statdropws\UserTrophy.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="statsfileformat.txt" />
@@ -104,10 +110,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://statdrop.startstop.me/developerapi.asmx">
+    <WebReferenceUrl Include="http://statdrop.startstop.me/0.2/developerapi.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\statdropws\</RelPath>
-      <UpdateFromURL>http://statdrop.startstop.me/developerapi.asmx</UpdateFromURL>
+      <UpdateFromURL>http://statdrop.startstop.me/0.2/developerapi.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

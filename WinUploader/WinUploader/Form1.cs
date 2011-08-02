@@ -20,6 +20,9 @@ namespace WinUploader
         // Setup a connection to the statdrop webservices
         public statdropws.DeveloperAPI oDevAPI = new statdropws.DeveloperAPI();
         
+        //set up the return message
+        public statdropws.ReturnMessage oReturnMessage = new statdropws.ReturnMessage(); 
+
         // Developer APIKEY
         const string APIKey = "1b50f643-fb89-4d5a-8fcf-20ca96deef22";
 
@@ -64,13 +67,13 @@ namespace WinUploader
         private void btnUpload_Click(object sender, EventArgs e)
         {
            
+            oReturnMessage = oDevAPI.AuthenticateUser(APIKey, txbEmailAddress.Text, txbPassword.Text);
+            if (!oReturnMessage.Success)
+            {
 
-
-         Int64 _UserID = oDevAPI.AuthenticateUser(APIKey, txbEmailAddress.Text, txbPassword.Text);
          
-            // Lets make sure we have a user huh. :) 
-            if (_UserID == -1)
-         {
+         
+            
              if ((txbEmailAddress.Text == "") || (txbPassword.Text == ""))
              {
                  MessageBox.Show("You need to provide your email and password to upload"); 
@@ -82,6 +85,7 @@ namespace WinUploader
          }
          else
          {
+             Int64 _UserID = oReturnMessage.ReturnedID; 
 
              #region Setup the Json file to be parsed... this is dirty, very dirty. ;)
 
