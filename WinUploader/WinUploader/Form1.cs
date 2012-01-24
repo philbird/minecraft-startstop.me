@@ -94,96 +94,108 @@ namespace WinUploader
             }
             else
             {
-                Int64 _UserID = oReturnMessage.ReturnedID;
-
-                #region Setup the Json file to be parsed... this is dirty, very dirty. ;)
-
-                StreamReader streamReader = new StreamReader(txbFileLocation.Text);
-                // We should read this by line so we can add key values into the JSON/ 
-                string _StatsFile = "";
-                bool _hitStatsChange = false;
-                while (!streamReader.EndOfStream)
+                if (txbFileLocation.Text == "")
                 {
-                    string _holdLine = streamReader.ReadLine();
-
-                    // Capture the end of the file. 
-                    if ((_hitStatsChange) && (_holdLine.Contains("],")))
-                    {
-
-                        _hitStatsChange = false;
-                    }
-
-
-                    if (_hitStatsChange)
-                    {
-                        // Add the Value
-                        _holdLine = _holdLine.Replace("\":", "\", \"Val\":");
-                        // Add the Key
-                        _holdLine = _holdLine.Replace("{\"", "{\"Key\":\"");
-
-                    }
-                    // This has to go below the above so we don't capure the initia line. 
-                    if (_holdLine.ToLower().Contains("stats-change"))
-                    {
-                        _hitStatsChange = true;
-                        // This is a dirty aweful hack this whole lot. 
-                        _holdLine = _holdLine.Replace("stats-change", "statschange");
-                    }
-                    _StatsFile += _holdLine + System.Environment.NewLine;
-
+                    MessageBox.Show("You must select your file"); 
+                    
                 }
-
-                streamReader.Close();
-                #endregion
-
-                var jsonObject = JsonConvert.DeserializeObject<JsonObject>(_StatsFile);
-
-                int _statsCount = 0;
-                while (_statsCount < jsonObject.statschange.Count)
+                else
                 {
-                    string _Key = jsonObject.statschange[_statsCount].Key;
-                    int _Val = jsonObject.statschange[_statsCount].Val;
 
-                    #region UploadTheStat
+                    Int64 _UserID = oReturnMessage.ReturnedID;
 
-                    // Load the dictionary
-                    MineCraftHelper.Stats oStats = new MineCraftHelper.Stats();
+                    #region Setup the Json file to be parsed... this is dirty, very dirty. ;)
 
-
-                    // If this user has validated first. 
-                    if (ValidatedUserInfo.Validated)
+                    StreamReader streamReader = new StreamReader(txbFileLocation.Text);
+                    // We should read this by line so we can add key values into the JSON/ 
+                    string _StatsFile = "";
+                    bool _hitStatsChange = false;
+                    while (!streamReader.EndOfStream)
                     {
-                        // This should only then try to load up the keys which have been converted to GUIDs
-                        if ((oStats.ReturnStartStopID(_Key) != "") && (oStats.ReturnStartStopID(_Key).Length > 6))  
+                        string _holdLine = streamReader.ReadLine();
+
+                        // Capture the end of the file. 
+                        if ((_hitStatsChange) && (_holdLine.Contains("],")))
                         {
 
-                            //oDevAPI.ExactStatUpdateForUser(APIKey, _UserID, oStats.ReturnStartStopID(_Key), _Val, 0, "");
-                            //oDevAPI.ExactStatUpdateForUser(APIKey, UserID, detailstatid, Count, perfectnag, Note);
+                            _hitStatsChange = false;
+                        }
 
-                            // Flush it
-                            UserStat = new startstop.UserStat();
 
-                            // Load the object ready to send. 
-                            UserStat.UserGuid = ValidatedUserInfo.UserGUID;
-                            UserStat.DetailedStatGuid = new Guid( oStats.ReturnStartStopID(_Key));
-                            UserStat.Count = _Val;
-                            UserStat.Note = ""; 
+                        if (_hitStatsChange)
+                        {
+                            // Add the Value
+                            _holdLine = _holdLine.Replace("\":", "\", \"Val\":");
+                            // Add the Key
+                            _holdLine = _holdLine.Replace("{\"", "{\"Key\":\"");
 
-                            // Send the object and load in the result. 
-                            MessageResponse =  StartStopAccess.AddUserStat("", UserStat);           
+                        }
+                        // This has to go below the above so we don't capure the initia line. 
+                        if (_holdLine.ToLower().Contains("stats-change"))
+                        {
+                            _hitStatsChange = true;
+                            // This is a dirty aweful hack this whole lot. 
+                            _holdLine = _holdLine.Replace("stats-change", "statschange");
+                        }
+                        _StatsFile += _holdLine + System.Environment.NewLine;
+
+                    }
+
+                    streamReader.Close();
+                    #endregion
+
+                    var jsonObject = JsonConvert.DeserializeObject<JsonObject>(_StatsFile);
+
+                    int _statsCount = 0;
+                    while (_statsCount < jsonObject.statschange.Count)
+                    {
+                        string _Key = jsonObject.statschange[_statsCount].Key;
+                        int _Val = jsonObject.statschange[_statsCount].Val;
+
+                        #region UploadTheStat
+
+                        // Load the dictionary
+                        MineCraftHelper.Stats oStats = new MineCraftHelper.Stats();
+
+
+                        // If this user has validated first. 
+                        if (ValidatedUserInfo.Validated)
+                        {
+                            // This should only then try to load up the keys which have been converted to GUIDs
+                            if ((oStats.ReturnStartStopID(_Key) != "") && (oStats.ReturnStartStopID(_Key).Length > 6))
+                            {
+
+                                //oDevAPI.ExactStatUpdateForUser(APIKey, _UserID, oStats.ReturnStartStopID(_Key), _Val, 0, "");
+                                //oDevAPI.ExactStatUpdateForUser(APIKey, UserID, detailstatid, Count, perfectnag, Note);
+
+                                // Flush it
+                                UserStat = new startstop.UserStat();
+
+                                // Load the object ready to send. 
+                                UserStat.UserGuid = ValidatedUserInfo.UserGUID;
+                                UserStat.DetailedStatGuid = new Guid(oStats.ReturnStartStopID(_Key));
+                                UserStat.Count = _Val;
+                                UserStat.Note = "";
+
+                                // Send the object and load in the result. 
+                                MessageResponse = StartStopAccess.AddUserStat("", UserStat);
+
+                            }
 
                         }
 
+
+                        #endregion
+
+                        _statsCount++;
                     }
-
-
-                    #endregion
-
-                    _statsCount++;
-                }
-                // Update the last updated
-                oDevAPI.ExactStatUpdateForUser(APIKey, _UserID, 34, 0, 0, DateTime.Now.ToString());
-                lblMessage.Visible = true;
+                    // Update the last updated
+                    // TO DO! 
+                    //oDevAPI.ExactStatUpdateForUser(APIKey, _UserID, 34, 0, 0, DateTime.Now.ToString());
+                    
+                    
+                    lblMessage.Visible = true;
+                } // End no file record IF
             } // End Not Logged in IF
 
         }
