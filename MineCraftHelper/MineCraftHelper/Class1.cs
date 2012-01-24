@@ -22,7 +22,10 @@ namespace MineCraftHelper
        {
            Dictionary<string, string> Lookup = new Dictionary<string, string>();
 
-           Lookup.Add("1000", "13");
+           // Modified to be the GUID
+           Lookup.Add("1000", "2789365D-1BAA-480F-8C9F-C3F7B631109E");
+           
+           
            Lookup.Add("1001", "14");
            Lookup.Add("1002", "15");
            Lookup.Add("1003", "16");
@@ -61,14 +64,14 @@ namespace MineCraftHelper
         /// </summary>
         /// <param name="inboundID"></param>
         /// <returns></returns>
-       public Int64 ReturnStartStopID(string inboundID)
+       public string ReturnStartStopID(string inboundID)
        {
-           Int64 _startstopid = -1;
+           string _startstopid = "";
 
            Dictionary<string, string> Lookup = MapMineCraftStats();
            if (Lookup.ContainsKey(inboundID))
            {
-               _startstopid = Int64.Parse(Lookup[inboundID]); 
+               _startstopid = Lookup[inboundID].ToString(); 
            }
 
            return _startstopid; 

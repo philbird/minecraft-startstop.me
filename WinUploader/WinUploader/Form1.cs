@@ -30,6 +30,7 @@ namespace WinUploader
         public startstop.AccessPoint StartStopAccess = new startstop.AccessPoint();
         public startstop.MessageResponse MessageResponse = new startstop.MessageResponse();
         public startstop.ValidatedUserInfo ValidatedUserInfo = new startstop.ValidatedUserInfo();
+        public startstop.UserStat UserStat = new startstop.UserStat(); 
 
         #endregion
 
@@ -149,11 +150,28 @@ namespace WinUploader
                     MineCraftHelper.Stats oStats = new MineCraftHelper.Stats();
 
 
-                    if (_UserID != -1)
+                    // If this user has validated first. 
+                    if (ValidatedUserInfo.Validated)
                     {
-                        if (oStats.ReturnStartStopID(_Key) != -1)
+                        // This should only then try to load up the keys which have been converted to GUIDs
+                        if ((oStats.ReturnStartStopID(_Key) != "") && (oStats.ReturnStartStopID(_Key).Length > 6))  
                         {
-                            oDevAPI.ExactStatUpdateForUser(APIKey, _UserID, oStats.ReturnStartStopID(_Key), _Val, 0, "");
+
+                            //oDevAPI.ExactStatUpdateForUser(APIKey, _UserID, oStats.ReturnStartStopID(_Key), _Val, 0, "");
+                            //oDevAPI.ExactStatUpdateForUser(APIKey, UserID, detailstatid, Count, perfectnag, Note);
+
+                            // Flush it
+                            UserStat = new startstop.UserStat();
+
+                            // Load the object ready to send. 
+                            UserStat.UserGuid = ValidatedUserInfo.UserGUID;
+                            UserStat.DetailedStatGuid = new Guid( oStats.ReturnStartStopID(_Key));
+                            UserStat.Count = _Val;
+                            UserStat.Note = ""; 
+
+                            // Send the object and load in the result. 
+                            MessageResponse =  StartStopAccess.AddUserStat("", UserStat);           
+
                         }
 
                     }
@@ -181,6 +199,12 @@ namespace WinUploader
             Process.Start("http://www.statstop.me/Register.aspx");
         }
 
+
+        /// <summary>
+        /// Lets the user validate it before he starts off. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLogin_Click(object sender, EventArgs e)
         {
             // Validate the user

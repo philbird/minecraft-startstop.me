@@ -117,26 +117,26 @@ namespace WinUploader.startstop {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://startstop.me/AddStatOverview", RequestNamespace="http://startstop.me/", ResponseNamespace="http://startstop.me/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public MessageResponse AddStatOverview(string APIKey, StatOverView oStat) {
+        public MessageResponse AddStatOverview(string APIKey, StatOverView oStatOverview) {
             object[] results = this.Invoke("AddStatOverview", new object[] {
                         APIKey,
-                        oStat});
+                        oStatOverview});
             return ((MessageResponse)(results[0]));
         }
         
         /// <remarks/>
-        public void AddStatOverviewAsync(string APIKey, StatOverView oStat) {
-            this.AddStatOverviewAsync(APIKey, oStat, null);
+        public void AddStatOverviewAsync(string APIKey, StatOverView oStatOverview) {
+            this.AddStatOverviewAsync(APIKey, oStatOverview, null);
         }
         
         /// <remarks/>
-        public void AddStatOverviewAsync(string APIKey, StatOverView oStat, object userState) {
+        public void AddStatOverviewAsync(string APIKey, StatOverView oStatOverview, object userState) {
             if ((this.AddStatOverviewOperationCompleted == null)) {
                 this.AddStatOverviewOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddStatOverviewOperationCompleted);
             }
             this.InvokeAsync("AddStatOverview", new object[] {
                         APIKey,
-                        oStat}, this.AddStatOverviewOperationCompleted, userState);
+                        oStatOverview}, this.AddStatOverviewOperationCompleted, userState);
         }
         
         private void OnAddStatOverviewOperationCompleted(object arg) {
@@ -148,24 +148,26 @@ namespace WinUploader.startstop {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://startstop.me/AddUserStat", RequestNamespace="http://startstop.me/", ResponseNamespace="http://startstop.me/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public MessageResponse AddUserStat(string APIKey) {
+        public MessageResponse AddUserStat(string APIKey, UserStat oUserStat) {
             object[] results = this.Invoke("AddUserStat", new object[] {
-                        APIKey});
+                        APIKey,
+                        oUserStat});
             return ((MessageResponse)(results[0]));
         }
         
         /// <remarks/>
-        public void AddUserStatAsync(string APIKey) {
-            this.AddUserStatAsync(APIKey, null);
+        public void AddUserStatAsync(string APIKey, UserStat oUserStat) {
+            this.AddUserStatAsync(APIKey, oUserStat, null);
         }
         
         /// <remarks/>
-        public void AddUserStatAsync(string APIKey, object userState) {
+        public void AddUserStatAsync(string APIKey, UserStat oUserStat, object userState) {
             if ((this.AddUserStatOperationCompleted == null)) {
                 this.AddUserStatOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddUserStatOperationCompleted);
             }
             this.InvokeAsync("AddUserStat", new object[] {
-                        APIKey}, this.AddUserStatOperationCompleted, userState);
+                        APIKey,
+                        oUserStat}, this.AddUserStatOperationCompleted, userState);
         }
         
         private void OnAddUserStatOperationCompleted(object arg) {
@@ -247,6 +249,123 @@ namespace WinUploader.startstop {
             }
             set {
                 this.usernameField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://startstop.me/")]
+    public partial class UserStat {
+        
+        private long detailedStatLogIDField;
+        
+        private System.Guid userGuidField;
+        
+        private System.Guid detailedStatGuidField;
+        
+        private System.Guid detailedStatOverviewGUIDField;
+        
+        private long countField;
+        
+        private string noteField;
+        
+        private decimal percentField;
+        
+        private System.DateTime specificDateField;
+        
+        private System.DateTime loggedDateField;
+        
+        /// <remarks/>
+        public long DetailedStatLogID {
+            get {
+                return this.detailedStatLogIDField;
+            }
+            set {
+                this.detailedStatLogIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.Guid UserGuid {
+            get {
+                return this.userGuidField;
+            }
+            set {
+                this.userGuidField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.Guid DetailedStatGuid {
+            get {
+                return this.detailedStatGuidField;
+            }
+            set {
+                this.detailedStatGuidField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.Guid DetailedStatOverviewGUID {
+            get {
+                return this.detailedStatOverviewGUIDField;
+            }
+            set {
+                this.detailedStatOverviewGUIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public long Count {
+            get {
+                return this.countField;
+            }
+            set {
+                this.countField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Note {
+            get {
+                return this.noteField;
+            }
+            set {
+                this.noteField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public decimal Percent {
+            get {
+                return this.percentField;
+            }
+            set {
+                this.percentField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime SpecificDate {
+            get {
+                return this.specificDateField;
+            }
+            set {
+                this.specificDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime LoggedDate {
+            get {
+                return this.loggedDateField;
+            }
+            set {
+                this.loggedDateField = value;
             }
         }
     }

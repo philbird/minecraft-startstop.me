@@ -3,3 +3,8 @@ J:\my data\SVN\minecraftss\MineCraftHelper\MineCraftHelper\bin\Debug\MineCraftHe
 J:\my data\SVN\minecraftss\MineCraftHelper\MineCraftHelper\obj\Debug\ResolveAssemblyReference.cache
 J:\my data\SVN\minecraftss\MineCraftHelper\MineCraftHelper\obj\Debug\MineCraftHelper.dll
 J:\my data\SVN\minecraftss\MineCraftHelper\MineCraftHelper\obj\Debug\MineCraftHelper.pdb
+C:\My Data\svn\minecraftss\MineCraftHelper\MineCraftHelper\bin\Debug\MineCraftHelper.dll
+C:\My Data\svn\minecraftss\MineCraftHelper\MineCraftHelper\bin\Debug\MineCraftHelper.pdb
+C:\My Data\svn\minecraftss\MineCraftHelper\MineCraftHelper\obj\Debug\ResolveAssemblyReference.cache
+C:\My Data\svn\minecraftss\MineCraftHelper\MineCraftHelper\obj\Debug\MineCraftHelper.dll
+C:\My Data\svn\minecraftss\MineCraftHelper\MineCraftHelper\obj\Debug\MineCraftHelper.pdb
