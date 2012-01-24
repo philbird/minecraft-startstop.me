@@ -176,9 +176,11 @@ namespace WinUploader
                                 UserStat.DetailedStatGuid = new Guid(oStats.ReturnStartStopID(_Key));
                                 UserStat.Count = _Val;
                                 UserStat.Note = "";
+                                // This is the minecraft over view GUID. 
+                                UserStat.DetailedStatOverviewGUID = new Guid("81FC7B81-EF9C-4328-A24F-3F7229C8E052"); 
 
                                 // Send the object and load in the result. 
-                                MessageResponse = StartStopAccess.AddUserStat("", UserStat);
+                                MessageResponse = StartStopAccess.AddUserStat("bdc11d92-7ade-4dc1-885d-24ccfe32d174", UserStat);
 
                             }
 
@@ -241,5 +243,6 @@ namespace WinUploader
                 btnLogin.Enabled = false; 
             }
         }
+
     }
 }

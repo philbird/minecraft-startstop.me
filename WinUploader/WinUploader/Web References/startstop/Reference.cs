@@ -437,6 +437,8 @@ namespace WinUploader.startstop {
         
         private long overviewIDField;
         
+        private System.Guid overviewGUIDField;
+        
         private string titleField;
         
         private string descriptionField;
@@ -452,6 +454,16 @@ namespace WinUploader.startstop {
             }
             set {
                 this.overviewIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.Guid OverviewGUID {
+            get {
+                return this.overviewGUIDField;
+            }
+            set {
+                this.overviewGUIDField = value;
             }
         }
         
