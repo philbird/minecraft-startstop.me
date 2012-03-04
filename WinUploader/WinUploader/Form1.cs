@@ -179,8 +179,15 @@ namespace WinUploader
                                 // This is the minecraft over view GUID. 
                                 UserStat.DetailedStatOverviewGUID = new Guid("81FC7B81-EF9C-4328-A24F-3F7229C8E052"); 
 
+                                
                                 // Send the object and load in the result. 
                                 MessageResponse = StartStopAccess.AddUserStat("bdc11d92-7ade-4dc1-885d-24ccfe32d174", UserStat);
+
+                                // Now we need to check to see if a problem has occurred. 
+                                if (!MessageResponse.Success)
+                                {
+                                    MessageBox.Show(MessageResponse.Message); 
+                                }
 
                             }
 
