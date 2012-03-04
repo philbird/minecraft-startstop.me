@@ -7,7 +7,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{E3FFCB2B-2D0C-4CE8-8BEF-62E2645E9057}
 AppName=MinecraftUploader
-AppVersion=1.0
+AppVersion=1.5
 ;AppVerName=MinecraftUploader 1.0
 AppPublisher=startstop.me
 AppPublisherURL=http://www.startstop.me/
@@ -16,10 +16,11 @@ AppUpdatesURL=http://www.startstop.me/
 DefaultDirName={pf}\MinecraftUploader
 DefaultGroupName=MinecraftUploader
 AllowNoIcons=yes
-OutputDir=J:\my data\SVN\minecraftss\WinUploader\setup
+OutputDir=J:\git\minecraft-startstop.me\WinUploader\setup
 OutputBaseFilename=setup
 Compression=lzma
 SolidCompression=yes
+AppCopyright=Opensource
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -28,8 +29,12 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "J:\my data\SVN\minecraftss\WinUploader\WinUploader\bin\Debug\WinUploader.exe"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
+Source: "J:\git\minecraft-startstop.me\WinUploader\WinUploader\bin\Release\WinUploader.exe.config"; DestDir: "{app}"; Flags: ignoreversion
+Source: "J:\git\minecraft-startstop.me\WinUploader\WinUploader\bin\Release\WinUploader.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "J:\git\minecraft-startstop.me\WinUploader\WinUploader\bin\Release\WinUploader.XmlSerializers.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "J:\git\minecraft-startstop.me\WinUploader\WinUploader\bin\Release\MineCraftHelper.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "J:\git\minecraft-startstop.me\WinUploader\WinUploader\bin\Release\Newtonsoft.Json.Net35.dll"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\MinecraftUploader"; Filename: "{app}\WinUploader.exe"
