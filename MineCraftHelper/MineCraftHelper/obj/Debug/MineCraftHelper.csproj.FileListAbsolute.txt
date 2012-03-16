@@ -8,3 +8,8 @@ C:\My Data\svn\minecraftss\MineCraftHelper\MineCraftHelper\bin\Debug\MineCraftHe
 C:\My Data\svn\minecraftss\MineCraftHelper\MineCraftHelper\obj\Debug\ResolveAssemblyReference.cache
 C:\My Data\svn\minecraftss\MineCraftHelper\MineCraftHelper\obj\Debug\MineCraftHelper.dll
 C:\My Data\svn\minecraftss\MineCraftHelper\MineCraftHelper\obj\Debug\MineCraftHelper.pdb
+J:\git\minecraft-startstop.me\MineCraftHelper\MineCraftHelper\bin\Debug\MineCraftHelper.dll
+J:\git\minecraft-startstop.me\MineCraftHelper\MineCraftHelper\bin\Debug\MineCraftHelper.pdb
+J:\git\minecraft-startstop.me\MineCraftHelper\MineCraftHelper\obj\Debug\ResolveAssemblyReference.cache
+J:\git\minecraft-startstop.me\MineCraftHelper\MineCraftHelper\obj\Debug\MineCraftHelper.dll
+J:\git\minecraft-startstop.me\MineCraftHelper\MineCraftHelper\obj\Debug\MineCraftHelper.pdb

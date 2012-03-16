@@ -17,13 +17,6 @@ namespace WinUploader
     public partial class Form1 : Form
     {
 
-        #region deprecated calls
-        // Setup a connection to the statdrop webservices
-        public statdropws.DeveloperAPI oDevAPI = new statdropws.DeveloperAPI();
-
-        //set up the return message
-        public statdropws.ReturnMessage oReturnMessage = new statdropws.ReturnMessage();
-        #endregion
 
         #region New Service Calls
 
@@ -101,8 +94,7 @@ namespace WinUploader
                 }
                 else
                 {
-
-                    Int64 _UserID = oReturnMessage.ReturnedID;
+                    
 
                     #region Setup the Json file to be parsed... this is dirty, very dirty. ;)
 
