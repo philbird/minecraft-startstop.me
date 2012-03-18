@@ -23,7 +23,7 @@ namespace WinUploader
         public startstop.AccessPoint StartStopAccess = new startstop.AccessPoint();
         public startstop.MessageResponse MessageResponse = new startstop.MessageResponse();
         public startstop.ValidatedUserInfo ValidatedUserInfo = new startstop.ValidatedUserInfo();
-        public startstop.UserStat UserStat = new startstop.UserStat(); 
+        public startstop.UserStatLog UserStat = new startstop.UserStatLog(); 
 
         #endregion
 
@@ -161,7 +161,7 @@ namespace WinUploader
                                 //oDevAPI.ExactStatUpdateForUser(APIKey, UserID, detailstatid, Count, perfectnag, Note);
 
                                 // Flush it
-                                UserStat = new startstop.UserStat();
+                                UserStat = new startstop.UserStatLog();
 
                                 // Load the object ready to send. 
                                 UserStat.UserGuid = ValidatedUserInfo.UserGUID;
